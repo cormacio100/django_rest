@@ -1,4 +1,0 @@
-djangorestframework==3.6.4
-djangorestframework-jwt==1.8.0
-wheel==0.30.0
-pyJWT==1.4.2
