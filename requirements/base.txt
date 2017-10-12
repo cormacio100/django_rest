@@ -6,3 +6,4 @@ pip==9.0.1
 pytz==2017.2
 setuptools==36.5.0
 wheel==0.30.0
+gunicorn==19.4
