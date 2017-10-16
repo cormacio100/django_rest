@@ -26,7 +26,7 @@ SECRET_KEY = 'ysvimd()#+paj@+td7$j$%vyl%wk^b)&kbjd1q%ie@yaxo@=72'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["127.0.0.1","localhost","rest-test-django.herokuapp.com"]
 
 
 # Application definition
@@ -39,6 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
+    'rest_framework_docs',
+    'corsheaders',   # pip install django-cors-headers
     'todo',
     'accounts'
 ]
@@ -67,6 +69,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
 ]
 
 ROOT_URLCONF = 'django_todo.urls'
@@ -138,3 +141,19 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
 
 STATIC_URL = '/static/'
+
+# USE SSL TO SECURE HTTP REQUESTS/RESPONSES.
+# Must be placed after INSTALLED_APPS
+# Also need to adjust the ALLOWED_HOSTS to include "localhost" and heroku
+SECURE_SSL_REDIRECT = True
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO','https')
+
+# CORS Settings for use with REST
+CORS_ORIGIN_ALLOW_ALL = True
+CORS_ALLOW_CREDENTIALS = True
+# the whitelist should reflect the address that you are trying to call the API FROM
+# Only apps running on localhost will need to be whitelisted
+CORS_ORIGIN_WHITELIST = (
+    'http://localhost:8080',    # allow requests to be made FROM localhost
+    'http://127.0.0.1:8080',
+)

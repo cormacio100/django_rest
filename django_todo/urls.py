@@ -18,6 +18,8 @@ from django.contrib import admin
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
+    # route for drfdocs
+    url(r'^docs/', include('rest_framework_docs.urls')),
     # include routes in the to-do app's urls.py file
     url(r'^todo/', include('todo.urls')),
     # include routes in the account app's urls.py file
