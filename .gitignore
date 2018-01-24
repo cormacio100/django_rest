@@ -1,1 +1,4 @@
 .idea/
+*.xml
+*.pyc
+db.sqlite3
